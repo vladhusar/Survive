@@ -1,12 +1,13 @@
-import React from 'react';
-import Hero from './components/Hero'; 
-import './App.css'; 
+import './App.css';
+import Hero from './components/Hero';
+import SystemRequirements from './components/SystemRequirements';
 
 function App() {
   return (
-    <div className="App">
-      <Hero /> {}
-    </div>
+    <>
+      <Hero />
+      <SystemRequirements />
+    </>
   );
 }
 

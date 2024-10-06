@@ -1,75 +1,316 @@
-.list {
-    display: flex;
-    gap: 50px;
-    list-style: none;
-    color: white;
-  }
-  .section {
-    background-size: cover;
-    width: 100%;
-    height: 100vh;
+.menu__btn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 3;
+}
 
-    z-index: 1;
+.menu__btn .bar {
+  width: 30px;
+  height: 4px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background-color: black;
+  transition: 0.8s;
+}
+
+.menu__btn .bar:nth-child(2) {
+  top: calc(50% - 9px);
+}
+
+.menu__btn .bar:nth-child(3) {
+  top: calc(50% + 9px);
+}
+
+.menu__btn.active .bar:nth-child(1) {
+  display: none;
+}
+
+.menu__btn.active .bar:nth-child(2) {
+  top: 50%;
+  transform: translate(-50%, 0%) rotate(45deg);
+}
+
+.menu__btn.active .bar:nth-child(3) {
+  top: 50%;
+  transform: translate(-50%, 0%) rotate(-45deg);
+}
+
+.list.active {
+  background-color: rgb(91, 86, 86);
+  z-index: 2;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 20px;
+  animation-name: iteman;
+  animation-duration: 1.5s;
+}
+
+.list.active a {
+  font-weight: 600;
+  font-size: 30px;
+  border-bottom: 1px solid white;
+  max-width: 80%;
+  padding: 8px;
+}
+
+.item {
+  border-bottom: 1px solid white;
+}
+
+.list {
+  display: none;
+  gap: 60px;
+  list-style: none;
+  color: white;
+  font-size: 28px;
+  padding-top: 70px;
+  align-items: center;
+}
+
+.section {
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.hero {
+  display: flex;
+}
+
+@keyframes iteman {
+  0% {
+    transform: translateX(-100%);
   }
-  
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.langugageInner {
+  display: flex;
+  gap: 6px;
+}
+
+.languageArrow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-image: url(../../static/languageArrow.svg);
+  background-size: cover;
+  height: 10px;
+  width: 16px;
+  margin-top: 4px;
+  transform: rotate(-90deg);
+}
+
+.languageArrow2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-image: url(../../static/languageArrow.svg);
+  background-size: cover;
+  height: 10px;
+  width: 16px;
+  margin-top: 4px;
+}
+
+.language {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+}
+
+.language:hover {
+  cursor: pointer;
+  font-size: 15px;
+  color: rgb(250, 195, 195);
+}
+
+.languageArrow {
+  height: 8px;
+  width: 16px;
+  position: relative;
+}
+
+.languageArrow2 {
+  height: 8px;
+  width: 16px;
+  position: relative;
+}
+
+.languagesChangeNone {
+  display: none;
+}
+
+.languagesChange {
+  width: 82%;
+  z-index: 1;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  top: 80px;
+  right: 127px;
+}
+
+.smallButton {
+  font-size: 12px;
+  border: none;
+  background-color: #010101;
+  color: white;
+  width: 54px;
+  height: 21.8px;
+  cursor: pointer;
+  text-align: start;
+  padding-left: 6px;
+}
+
+.smallButton:hover {
+  color: #ffb548;
+}
+
+.title {
+  font-size: 24px;
+  text-align: center;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.text {
+  font-size: 22px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 20px;
+}
+
+.btn {
+  width: 210px;
+  height: 40px;
+  background-color: rgba(255, 181, 72, 1);
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 700;
+  display: block;
+  margin: 0 auto;
+}
+
+.logosInner {
+  display: flex;
+  gap: 21px;
+  align-items: center;
+  padding-top: 25px;
+  position: relative;
+}
+
+.sectionInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.main {
+  padding-top: 250px;
+}
+
+.story {
+  justify-content: center;
+  display: flex;
+  padding-top: 300px;
+}
+
+.story__text {
+  color: white;
+  position: relative;
+}
+
+.story__text::after {
+  content: "";
+  background-image: url(/src/static/scroll-down.svg);
+  position: absolute;
+  width: 23px;
+  height: 10px;
+  left: 16px;
+  top: 25px;
+  animation: scroll ease 1s infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (min-width: 992px) {
+  .title {
+    font-size: 48px;
+  }
+
+  .languagesChange {
+    top: 85px;
+    right: 125px;
+  }
+
+  .text {
+    font-size: 25px;
+  }
+
+  .btn {
+    width: 260px;
+    height: 50px;
+  }
+
+  .list {
+    display: flex;
+    font-size: 20px;
+    padding-top: 0;
+    padding-left: 15px;
+  }
+
+  .item {
+    border-bottom: none;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu__btn {
+    display: none;
+  }
 
   .hero {
     display: flex;
     align-items: center;
-    gap: 100px;
-    padding: 20px 0 0 100px;
+    padding-top: 25px;
+    justify-content: space-around;
   }
-  
-  
-  .title {
-    font-size: 80px;
-    text-align: center;
-    color: white;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .text {
-    font-size: 24px;
-    color: white;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 20px;
-  }
-  
-  .btn {
-    width: 260px;
-    height: 60px;
-    background-color: rgba(255, 181, 72, 1);
-    border: none;
-    border-radius: 3px;
-    font-size: 16px;
-    font-weight: 700;
-    display: block;
-    margin: 0 auto;
-  }
-  
-  .main {
-    padding-top: 250px;
-  }
-  
-  .story{
-    justify-content: center;
-    display: flex;
-    padding-top: 320px;
-  }
-  .story__text {
-    color: white;
-    position: relative;
-  }
-
-  .story__text::after{
-    content: "";
-    background-image: url(/src/static/scroll-down.svg);
-    position: absolute;
-    width: 23px;
-    height: 10px;
-    left: 14px;
-    top: 25px;
-
-  }
+}

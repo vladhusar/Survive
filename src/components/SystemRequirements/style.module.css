@@ -1,0 +1,10 @@
+.section {
+  background-size: cover;
+  background-position: center;
+  padding: 40px 20px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Висота секції, щоб заповнити весь вікно */
+}
