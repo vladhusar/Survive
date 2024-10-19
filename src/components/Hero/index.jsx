@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import css from "./style.module.css";
+import React, { useState } from "react";
 import bg from "../../static/bgimage1.jpg";
 import logo from "../../static/logo-sos.svg";
 import xboxIcon from "../../static/xboxIcon.svg";
@@ -7,15 +7,20 @@ import steamIcon from "../../static/steamIcon.svg";
 import languageArrow from "../../static/languageArrow.svg";
 import langugeLine from "../../static/langugeLine.svg";
 
+// menu__btn.addEventListener("click", () => {
+//   menuBtn.classList.toggle("active");
+//   list.classList.toggle("active");
+// });
+
 const Hero = () => {
-  const [showMenu, setShowMenu] = useState(false);
   const [changeArrowClass, setChangeArrowClass] = useState("languageArrow");
   const [changeLanguageClass, setChangeLanguageClass] = useState(
     "languagesChangeNone"
   );
-
+  const [show, setShow] = useState(false);
   const menuHandler = () => {
-    setShowMenu(!showMenu);
+    setShow(!show);
+    console.log(show);
   };
 
   const languageChange = () => {
@@ -25,7 +30,6 @@ const Hero = () => {
       setChangeArrowClass("languageArrow");
     }
   };
-
   const openLanguageMenu = () => {
     if (changeLanguageClass === "languagesChangeNone") {
       setChangeLanguageClass("languagesChange");
@@ -35,27 +39,25 @@ const Hero = () => {
   };
 
   return (
-    <section
-      className={css.section}
-      style={{ backgroundImage: `url(${bg})` }}
-    >
+    <section className={css.section} style={{ backgroundImage: `url(${bg})` }}>
       <div className={css.sectionInner}>
         <div className={css.hero}>
           <button
-            onClick={menuHandler}
-            className={`${css.menu__btn} ${showMenu ? css.active : ""}`}
+            onClick={() => menuHandler()}
+            className={show ? css.menu__btn + " " + css.active : css.menu__btn}
           >
             <span className={css.bar}></span>
             <span className={css.bar}></span>
             <span className={css.bar}></span>
           </button>
-          <img className={css.logo} alt={"Logo"} src={logo} />
-          <ul className={`${css.list} ${showMenu ? css.active : ""}`}>
-            <li className={css.item}>Main</li>
-            <li className={css.item}>About</li>
-            <li className={css.item}>Game features</li>
-            <li className={css.item}>System requirements</li>
-            <li className={css.item}>Quotes</li>
+          <img className={css.logo} alt={"image"} src={logo} />
+          <ul className={show ? css.list + " " + css.active : css.list}>
+            <li className={css.item}> Main</li>
+            <li className={css.item}> About</li>
+            <li className={css.item}> Game features</li>
+            <li className={css.item}> System requirements</li>
+            <li className={css.item}> Quotes</li>
+
             <li className={css.logosInner}>
               <div className={css.langugageInner}>
                 <h1
@@ -67,16 +69,12 @@ const Hero = () => {
                 >
                   ENG
                 </h1>
-                <div className={css[changeArrowClass]}></div>
+                <div className={`${css[changeArrowClass]}`}></div>
               </div>
-              <img
-                src={langugeLine}
-                alt="Language Line"
-                className={css.langugeLine}
-              />
-              <img src={xboxIcon} alt="Xbox Icon" className={css.icon} />
-              <img src={steamIcon} alt="Steam Icon" className={css.icon} />
-              <ul className={css[changeLanguageClass]}>
+              <img src={langugeLine} alt="langugeLine" className={css.langugeLine} />
+              <img src={xboxIcon} alt="icon" className={css.icon} />
+              <img src={steamIcon} alt="icon" className={css.icon} />
+              <div className={`${css[changeLanguageClass]}`}>
                 <button className={css.smallButton} onClick={openLanguageMenu}>
                   RUS
                 </button>
@@ -86,10 +84,12 @@ const Hero = () => {
                 <button className={css.smallButton} onClick={openLanguageMenu}>
                   DEU
                 </button>
-              </ul>
+              </div>
             </li>
+
           </ul>
         </div>
+
       </div>
 
       <div className={css.main}>
@@ -97,7 +97,6 @@ const Hero = () => {
         <p className={css.text}>Experience new social battle royale game</p>
         <button className={css.btn}> Buy Now on Steam $14.88</button>
       </div>
-
       <div className={css.story}>
         <p className={css.story__text}>The story</p>
       </div>
